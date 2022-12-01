@@ -9,16 +9,16 @@ provider:
   lambdaHashingVersion: '20201221'
   region: us-east-1
   iam:
-      role:
-          statements:
-            - Effect: Allow
-              Action:
-                - dynamodb:PutItem
-                - dynamodb:UpdateItem
-                - dynamodb:GetItem
-                - dynamodb:Scan
-              Resource:
-                - arn:aws:dynamodb:us-east-1:167880115321:table/ItemTable
+     role:
+        statements:
+          - Effect: Allow
+            Action:
+              - dynamodb:PutItem
+              - dynamodb:UpdateItem
+              - dynamodb:GetItem
+              - dynamodb:Scan
+            Resource:
+              - arn:aws:dynamodb:us-east-1:808005381747:table/ItemTable
                 
 functions:
   hello:
@@ -31,7 +31,7 @@ functions:
     handler: src/insertItem.handler
     events:
       - http:
-          path: /item
+          path: /items
           method: post
   fetchItems:
     handler: src/fetchItems.handler
@@ -39,18 +39,21 @@ functions:
       - http:
           path: /items
           method: get
+          
   fetchItem:
     handler: src/fetchItem.handler
     events:
       - http:
           path: /items/{id}
           method: get
+          
   updateItem:
     handler: src/updateItem.handler
     events:
       - http:
           path: /items/{id}
           method: put
+          
 resources:
   Resources:
     ItemTable:
