@@ -18,7 +18,7 @@ provider:
               - dynamodb:GetItem
               - dynamodb:Scan
             Resource:
-              - arn:aws:dynamodb:us-east-1:808005381747:table/ItemTable
+              - arn:aws:dynamodb:sa-east-1:117337584632:table/ItemTableNew
                 
 functions:
   hello:
